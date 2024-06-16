@@ -1,4 +1,4 @@
-target/
+starget/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -9,7 +9,7 @@ target/
 .idea/compiler.xml
 .idea/libraries/
 *.iws
-*.iml
+*.imls
 *.ipr
 
 ### Eclipse ###
@@ -36,3 +36,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/
