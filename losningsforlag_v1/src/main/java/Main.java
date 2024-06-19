@@ -1,6 +1,5 @@
 import business.FunnFileReader;
-
-import java.io.FileReader;
+import business.Registration;
 
 public class Main {
 
@@ -9,11 +8,16 @@ public class Main {
 
         FunnFileReader funnFileReader = new FunnFileReader();
         try {
-            funnFileReader.read("src/main/resources/funn.txt");
+            funnFileReader.readModelsFromFile("src/main/resources/funn.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         funnFileReader.PrintEverything();
+
+        Registration registration = new Registration();
+        registration.registerPeople(funnFileReader.getPeople());
+        registration.registerMuseums(funnFileReader.getMuseums());
+        registration.registerItems(funnFileReader.getItems());
     }
 }

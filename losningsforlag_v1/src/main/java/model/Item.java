@@ -1,17 +1,19 @@
 package model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Item {
     private int id;
     private String coordinates;
     private int finderId;
-    private Date foundDate;
+    private LocalDate foundDate;
     private int estimatedYear;
     private int museumId; //can be null
     private ItemType itemType;
 
-    public Item(int id, String coordinates, int finderId, Date foundDate, int estimatedYear, int museumId, ItemType itemType) {
+    public Item(int id, String coordinates, int finderId, LocalDate foundDate, int estimatedYear, int museumId, ItemType itemType) {
         this.id = id;
         this.coordinates = coordinates;
         this.finderId = finderId;
@@ -19,5 +21,37 @@ public abstract class Item {
         this.estimatedYear = estimatedYear;
         this.museumId = museumId;
         this.itemType = itemType;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public int getFinderId() {
+        return finderId;
+    }
+
+    public LocalDate getFoundDate() {
+        return foundDate;
+    }
+
+    public String getFoundDateString() {
+        return foundDate.toString();
+    }
+
+    public int getEstimatedYear() {
+        return estimatedYear;
+    }
+
+    public int getMuseumId() {
+        return museumId;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
     }
 }

@@ -1,17 +1,31 @@
 package model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Weapon extends Item {
     private String weaponType;
     private String material;
     private int weight;
 
-    public Weapon(int id, String coordinates, int finderId, Date foundDate, int estimatedYear, int museumId, String weaponType, String material, int weight) {
+    public Weapon(int id, String coordinates, int finderId, LocalDate foundDate, int estimatedYear, int museumId, String weaponType, String material, int weight) {
         super(id, coordinates, finderId, foundDate, estimatedYear, museumId, ItemType.WEAPON);
         this.weaponType = weaponType;
         this.material = material;
         this.weight = weight;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 
     @Override

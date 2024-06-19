@@ -4,15 +4,12 @@ import model.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
-
-enum Mode {
-    PERSON,
-    MUSEUM,
-    ITEM
-}
 
 public class FunnFileReader {
 
@@ -21,10 +18,20 @@ public class FunnFileReader {
 
     //this can contain all types of items
     ArrayList<Item> items = new ArrayList<>();
-    Mode mode = Mode.PERSON;
-    int amount = 0;
 
-    public void read(String filename) throws FileNotFoundException {
+    public ArrayList<Person> getPeople() {
+        return people;
+    }
+
+    public ArrayList<Museum> getMuseums() {
+        return museums;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void readModelsFromFile(String filename) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileReader(filename));
 
         ArrayList<String> lines = new ArrayList<>();
@@ -111,7 +118,7 @@ public class FunnFileReader {
         int id = Integer.parseInt(lines.get(0));
         String coordinates = lines.get(1);
         int finderId = Integer.parseInt(lines.get(2));
-        Date foundDate = FormatDate(lines.get(3));
+        LocalDate foundDate = FormatDate(lines.get(3));
         int estimatedYear = Integer.parseInt(lines.get(4));
 
         String museumIdString = lines.get(5);
@@ -127,7 +134,7 @@ public class FunnFileReader {
         int id = Integer.parseInt(lines.get(0));
         String coordinates = lines.get(1);
         int finderId = Integer.parseInt(lines.get(2));
-        Date foundDate = FormatDate(lines.get(3));
+        LocalDate foundDate = FormatDate(lines.get(3));
         int estimatedYear = Integer.parseInt(lines.get(4));
 
         String museumIdString = lines.get(5);
@@ -144,7 +151,7 @@ public class FunnFileReader {
         int id = Integer.parseInt(lines.get(0));
         String coordinates = lines.get(1);
         int finderId = Integer.parseInt(lines.get(2));
-        Date foundDate = FormatDate(lines.get(3));
+        LocalDate foundDate = FormatDate(lines.get(3));
         int estimatedYear = Integer.parseInt(lines.get(4));
 
         String museumIdString = lines.get(5);
@@ -157,9 +164,13 @@ public class FunnFileReader {
         return new Weapon(id, coordinates, finderId, foundDate, estimatedYear, museumId, type, material, weight);
     }
 
-    public Date FormatDate(String dateString){
+    public LocalDate FormatDate(String dateString){
         String[] dateParts = dateString.split("-");
-        return new Date(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
+        int year = Integer.parseInt(dateParts[0]);
+        int month = Integer.parseInt(dateParts[1]);
+        int day = Integer.parseInt(dateParts[2]);
+
+        return LocalDate.of(year, month, day);
     }
 
     public void PrintEverything(){
@@ -174,5 +185,9 @@ public class FunnFileReader {
         for (Item item : items) {
             System.out.println(item);
         }
+    }
+
+    public void AddPersonToDatabase(Person person){
+
     }
 }
