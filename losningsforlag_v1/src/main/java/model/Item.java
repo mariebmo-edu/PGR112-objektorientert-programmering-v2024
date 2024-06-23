@@ -54,4 +54,17 @@ public abstract class Item {
     public ItemType getItemType() {
         return itemType;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", coordinates='" + coordinates + '\'' +
+                ", finderId=" + finderId +
+                ", foundDate=" + foundDate +
+                ", estimatedYear=" + estimatedYear +
+                ", museumId=" + museumId +
+                ", itemType=" + itemType +
+                '}';
+    }
 }

@@ -2,50 +2,42 @@ package business;
 
 import model.*;
 import repo.*;
+import service.*;
 
 import java.util.ArrayList;
 
 public class Registration {
 
-    PersonRepo personRepo;
-    MuseumRepo museumRepo;
-    JewelryRepo jewelryRepo;
-    CoinRepo coinRepo;
-    WeaponRepo weaponRepo;
+    PersonService personService;
+    MuseumService museumService;
+    CoinService coinService;
+    JewelryService jewelryService;
+    WeaponService weaponService;
 
     public Registration() {
-        try {
-            personRepo = new PersonRepo();
-            museumRepo = new MuseumRepo();
-            jewelryRepo = new JewelryRepo();
-            coinRepo = new CoinRepo();
-            weaponRepo = new WeaponRepo();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        personService = PersonService.getInstance();
+        museumService = MuseumService.getInstance();
+        coinService = CoinService.getInstance();
+        jewelryService = JewelryService.getInstance();
+        weaponService = WeaponService.getInstance();
     }
 
-
     public void registerPeople(ArrayList<Person> people) {
-        for (Person person : people) {
-            personRepo.insert(person);
-        }
+        personService.insertList(people);
     }
 
     public void registerMuseums(ArrayList<Museum> museums) {
-        for (Museum museum : museums) {
-            museumRepo.insert(museum);
-        }
+        museumService.insertList(museums);
     }
 
     public void registerItems(ArrayList<Item> items) {
         for (Item item : items) {
             if (item instanceof Coin) {
-                coinRepo.insert((Coin) item);
+                coinService.insert((Coin) item);
             } else if (item instanceof Jewelry) {
-                jewelryRepo.insert((Jewelry) item);
+                jewelryService.insert((Jewelry) item);
             } else if (item instanceof Weapon) {
-                weaponRepo.insert((Weapon) item);
+                weaponService.insert((Weapon) item);
             }
         }
     }

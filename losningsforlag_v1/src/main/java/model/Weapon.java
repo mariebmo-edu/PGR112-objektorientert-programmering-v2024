@@ -34,6 +34,6 @@ public class Weapon extends Item {
                 "weaponType='" + weaponType + '\'' +
                 ", material='" + material + '\'' +
                 ", weight=" + weight +
-                '}';
+                super.toString() + '}';
     }
 }

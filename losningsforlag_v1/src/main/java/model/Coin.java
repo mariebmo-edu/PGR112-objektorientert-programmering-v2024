@@ -27,6 +27,6 @@ public class Coin extends Item {
         return "Coin{" +
                 "diameter=" + diameter +
                 ", metal='" + metal + '\'' +
-                '}';
+                super.toString() + '}';
     }
 }

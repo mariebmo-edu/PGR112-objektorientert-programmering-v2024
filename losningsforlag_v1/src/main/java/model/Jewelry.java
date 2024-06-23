@@ -34,6 +34,7 @@ public class Jewelry extends Item {
                 "category='" + category + '\'' +
                 ", valueEstimate=" + valueEstimate +
                 ", imgName='" + imgName + '\'' +
-                '}';
+                super.toString() + '}';
+
     }
 }
