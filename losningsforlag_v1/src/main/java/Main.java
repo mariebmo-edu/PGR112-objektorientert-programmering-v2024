@@ -15,7 +15,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-                Registration registration = new Registration();
+
+        Registration registration = new Registration();
         registration.registerPeople(funnFileReader.getPeople());
         registration.registerMuseums(funnFileReader.getMuseums());
         registration.registerItems(funnFileReader.getItems());
